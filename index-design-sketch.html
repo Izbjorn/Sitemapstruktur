@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oddwork Design Sketch</title>
+    <style>
+      @font-face {
+        font-family: "AvenirOddwork";
+        src: url("https://oddwork.se/app/themes/oddwork/dist/fonts/AvenirLTStd-Roman.woff")
+          format("woff");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "KobeOddwork";
+        src: url("https://oddwork.se/app/themes/oddwork/dist/fonts/kobe11-black.woff2")
+            format("woff2"),
+          url("https://oddwork.se/app/themes/oddwork/dist/fonts/kobe11-black.woff")
+            format("woff");
+        font-display: swap;
+      }
+
+      :root {
+        --bg: #ffffff;
+        --ink: #101010;
+        --muted: #5e5e5e;
+        --line: #e8e4dd;
+        --accent: #ff4900;
+        --soft: #fff1ea;
+        --max: 1320px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      body {
+        font-family: "AvenirOddwork", "Avenir Next", "Segoe UI", sans-serif;
+        line-height: 1.4;
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: min(var(--max), 94vw);
+        margin-inline: auto;
+      }
+
+      .sketch-note {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .sketch-note b {
+        color: var(--accent);
+        font-family: "KobeOddwork", "AvenirOddwork", sans-serif;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(7px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .header-row {
+        min-height: 78px;
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: end;
+        gap: 20px;
+        padding-bottom: 12px;
+      }
+
+      .brand {
+        text-decoration: none;
+        color: inherit;
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .brand strong {
+        font-family: "KobeOddwork", "AvenirOddwork", sans-serif;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        letter-spacing: 0.02em;
+      }
+
+      .brand span {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 0.98rem;
+      }
+
+      .nav a:hover {
+        color: var(--accent);
+      }
+
+      .meta {
+        font-size: 0.85rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 93vh;
+        display: grid;
+        align-content: end;
+        padding: 58px 0 72px;
+        overflow: hidden;
+      }
+
+      .hero-shape {
+        position: absolute;
+        pointer-events: none;
+        border-radius: 100px;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .hero-shape.one {
+        top: 15%;
+        right: -10%;
+        width: min(48vw, 560px);
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        animation: driftX 9s ease-in-out infinite;
+      }
+
+      .hero-shape.two {
+        top: 10%;
+        left: 6%;
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--accent);
+        background: #fff;
+        animation: driftY 8s ease-in-out infinite;
+      }
+
+      .hero-shape.three {
+        bottom: 15%;
+        right: 12%;
+        width: 110px;
+        height: 110px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #fff, #ffe9de);
+        animation: float 10s ease-in-out infinite;
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: end;
+      }
+
+      .hero-copy {
+        max-width: 16ch;
+      }
+
+      .kicker {
+        margin: 0 0 10px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.78rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "KobeOddwork", "AvenirOddwork", sans-serif;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3rem, 11vw, 8.4rem);
+        line-height: 0.9;
+      }
+
+      .hero-intro {
+        margin: 26px 0 0;
+        max-width: 45ch;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.6vw, 1.3rem);
+      }
+
+      .hero-cta {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 999px;
+        padding: 12px 20px;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        background: #fff;
+        font-size: 1rem;
+      }
+
+      .btn:hover {
+        border-color: var(--accent);
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      .hero-side {
+        justify-self: end;
+        max-width: 420px;
+        border: 1px solid var(--line);
+        padding: 20px;
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 24px 40px rgba(0, 0, 0, 0.06);
+      }
+
+      .hero-side p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .hero-side h3 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+      }
+
+      .ticker {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .ticker-track {
+        display: inline-block;
+        padding: 12px 0;
+        animation: marquee 24s linear infinite;
+        color: var(--muted);
+      }
+
+      .ticker-track span {
+        display: inline-block;
+        margin-right: 44px;
+      }
+
+      .ticker-track b {
+        color: var(--accent);
+        font-family: "KobeOddwork", "AvenirOddwork", sans-serif;
+      }
+
+      .section {
+        padding: 78px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+
+      .section h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4.8vw, 4rem);
+        line-height: 0.96;
+      }
+
+      .section p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 74ch;
+      }
+
+      .logo-strip {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .logo-pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 14px 16px;
+        text-align: center;
+        background: #fff;
+        font-family: "KobeOddwork", "AvenirOddwork", sans-serif;
+      }
+
+      .signal {
+        margin-top: 14px;
+        border-left: 3px solid var(--accent);
+        background: var(--soft);
+        padding: 12px 14px;
+      }
+
+      .split {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+        background: #fff;
+        display: grid;
+        gap: 14px;
+      }
+
+      .panel h3 {
+        margin: 0;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      .panel p {
+        color: var(--muted);
+      }
+
+      .grid-3 {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 18px;
+        background: #fff;
+        display: grid;
+        gap: 8px;
+      }
+
+      .card h3,
+      .card h4 {
+        margin: 0;
+        font-size: 1.34rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        width: fit-content;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .footer-cta {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--soft);
+        padding: 28px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .footer-cta h2 {
+        margin: 0;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes driftX {
+        0%,
+        100% {
+          transform: translateX(0);
+          opacity: 0.35;
+        }
+        50% {
+          transform: translateX(-36px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes driftY {
+        0%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(16px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-16px);
+        }
+      }
+
+      @media (max-width: 1120px) {
+        .header-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          align-items: center;
+          padding: 10px 0;
+        }
+
+        .meta {
+          display: none;
+        }
+
+        .hero-grid,
+        .split,
+        .grid-3,
+        .logo-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-side {
+          justify-self: start;
+          max-width: 100%;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 34px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container sketch-note">
+      <span><b>Design sketch</b> med copy och info fran oddwork.se</span>
+      <span>Referens: Telha Clarke-kansla, vit bas, subtil orange accent</span>
+    </div>
+
+    <header class="header">
+      <div class="container header-row">
+        <a class="brand" href="index-design-sketch.html">
+          <strong>ODDWORK</strong>
+          <span>Employer branding- och rekryteringsbyra</span>
+        </a>
+        <nav class="nav" aria-label="Global navigation">
+          <a href="index-design-sketch.html">Start</a>
+          <a href="rekrytering.html">Rekrytering</a>
+          <a href="employer-branding.html">Employer Branding</a>
+          <a href="kundcase.html">Kundcase</a>
+          <a href="insights.html">Insights</a>
+          <a href="om-oss.html">Om oss</a>
+          <a href="kontakt.html">Kontakt</a>
+        </nav>
+        <div class="meta">
+          Stockholm, SE <span id="clock"></span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="hero-shape one" aria-hidden="true"></span>
+        <span class="hero-shape two" aria-hidden="true"></span>
+        <span class="hero-shape three" aria-hidden="true"></span>
+
+        <div class="container hero-grid">
+          <div>
+            <p class="kicker">Attrahera / Rekrytera / Behall</p>
+            <div class="hero-copy">
+              <h1>Find your odd.</h1>
+            </div>
+            <p class="hero-intro">
+              Attrahera, rekrytera och behall medarbetare. Fran datadrivna insikter om
+              arbetsgivarvarumarket till strategi, nya medarbetare och digital kommunikation.
+            </p>
+            <div class="hero-cta">
+              <a class="btn primary" href="rekrytering.html">Ga till Rekrytering</a>
+              <a class="btn" href="employer-branding.html">Ga till Employer Branding</a>
+            </div>
+          </div>
+
+          <aside class="hero-side">
+            <h3>Snabb orientering</h3>
+            <p>
+              Valj spar direkt, ga till case for bevis eller boka ett inledande mote. Designad for
+              storre beslut med flera intressenter.
+            </p>
+            <div class="hero-cta">
+              <a class="btn" href="kundcase.html">Se kundcase</a>
+              <a class="btn" href="kontakt.html">Prata med oss</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <div class="ticker">
+        <div class="ticker-track">
+          <span><b>Rekrytering</b> med arbetsgivarvarumarket i fokus</span>
+          <span><b>Employer Branding</b> fran strategi till handling</span>
+          <span><b>Kundcase</b> 100+ bolag har fatt hjalp</span>
+          <span><b>Insights</b> kunskap inom rekrytering och employer branding</span>
+          <span><b>Rekrytering</b> med arbetsgivarvarumarket i fokus</span>
+          <span><b>Employer Branding</b> fran strategi till handling</span>
+          <span><b>Kundcase</b> 100+ bolag har fatt hjalp</span>
+          <span><b>Insights</b> kunskap inom rekrytering och employer branding</span>
+        </div>
+      </div>
+
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2>Kunder och snabba bevis</h2>
+            <p>
+              Ett snabbt fortroendelager pa startsidan. Full fordjupning sker pa tjanstesidor och i
+              kundcase.
+            </p>
+          </div>
+          <div class="logo-strip">
+            <div class="logo-pill">Apoteket</div>
+            <div class="logo-pill">SEB</div>
+            <div class="logo-pill">Saab</div>
+            <div class="logo-pill">Avanza</div>
+            <div class="logo-pill">Alfa Laval</div>
+          </div>
+          <p class="signal">
+            Exempel pa bevis: +31% kvalificerade ansokningar i prioriterade malgrupper.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2>Tjanster</h2>
+            <p>Tva erbjudanden. Tydliga ingangar. Olika metodik.</p>
+          </div>
+          <div class="split">
+            <article class="panel">
+              <h3>Rekrytering</h3>
+              <p>
+                Rekrytering och inhyrning med arbetsgivarvarumarket i fokus. Hitta ratt
+                rekryterare for kritiska roller och komplexa behov.
+              </p>
+              <a class="btn" href="rekrytering.html">Utforska Rekrytering</a>
+            </article>
+            <article class="panel">
+              <h3>Employer Branding</h3>
+              <p>
+                Mellan kandidat och arbetsgivare hjalper vi er identifiera, paketera och
+                kommunicera arbetsgivarvarumarket. Fran strategi till handling.
+              </p>
+              <a class="btn" href="employer-branding.html">Utforska Employer Branding</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2>Utvalda kundcase</h2>
+            <p>
+              Vi har hjalpt 100+ bolag med employer branding och rekrytering. Har ar ett urval
+              for snabb validering.
+            </p>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <span class="tag">Employer Branding</span>
+              <h3>Apoteket</h3>
+              <p>Utmaning, losning och mätbar effekt i prioriterade malgrupper.</p>
+              <a class="btn" href="kundcase-apoteket.html">Las case</a>
+            </article>
+            <article class="card">
+              <span class="tag">Rekrytering</span>
+              <h3>SEB</h3>
+              <p>Komplex tillsattning med fokus pa kvalitet, tempo och kandidatupplevelse.</p>
+              <a class="btn" href="kundcase-apoteket.html">Las case</a>
+            </article>
+            <article class="card">
+              <span class="tag">Hybrid</span>
+              <h3>Saab</h3>
+              <p>Samspel mellan arbetsgivarvarumarke och rekrytering i samma leverans.</p>
+              <a class="btn" href="kundcase-apoteket.html">Las case</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2>Insights</h2>
+            <p>Allt du behover veta om employer branding och rekrytering.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <h4>Trendspaning inom Employer Branding</h4>
+              <p>Strategiska skiften och vad de betyder for attraktion och valbarhet.</p>
+            </article>
+            <article class="card">
+              <h4>Rekrytering i komplexa organisationer</h4>
+              <p>Hur processdesign paverkar precision, tid till tillsattning och kvalitet.</p>
+            </article>
+            <article class="card">
+              <h4>Kandidatupplevelse och konvertering</h4>
+              <p>Kopplingen mellan varumarke, kommunikation och faktisk ansokningsvilja.</p>
+            </article>
+          </div>
+          <div class="hero-cta">
+            <a class="btn" href="insights.html">Se alla insights</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="container">
+          <div class="footer-cta">
+            <h2>Redo att ta nasta steg?</h2>
+            <p>
+              Boka ett forsta mote sa skissar vi scope, prioriteringar och nasta steg utifran ert
+              nulage.
+            </p>
+            <div class="hero-cta">
+              <a class="btn primary" href="kontakt.html">Kontakta oss</a>
+              <a class="btn" href="om-oss.html">Kort om Oddwork</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const sections = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.12 }
+      );
+      sections.forEach((section) => observer.observe(section));
+
+      const clock = document.getElementById("clock");
+      function renderClock() {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, "0");
+        const mm = String(now.getMinutes()).padStart(2, "0");
+        clock.textContent = hh + ":" + mm;
+      }
+      renderClock();
+      setInterval(renderClock, 1000);
+    </script>
+  </body>
+</html>
