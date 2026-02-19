@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oddwork Prototyp - Kontakt</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="index.html">
+          ODDWORK PROTOTYP
+          <small>Upplevelseprototyp for ny webbstruktur</small>
+        </a>
+        <nav class="nav" aria-label="Global navigation">
+          <a href="index.html">Start</a>
+          <a href="rekrytering.html">Rekrytering</a>
+          <a href="employer-branding.html">Employer Branding</a>
+          <a href="kundcase.html">Kundcase</a>
+          <a href="insights.html">Insights</a>
+          <a href="om-oss.html">Om oss</a>
+          <a class="active" href="kontakt.html">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">Start</a> / Kontakt</p>
+
+        <section class="hero">
+          <p class="eyebrow">Kontakt</p>
+          <h1>Har finns tydlig handlingsyta for dialog och motesbokning</h1>
+          <p class="module-status-line">
+            <span class="module-badge anpassad">Anpassad</span>
+            Modulstatus: Kontakt finns idag men flodet forenklas och prioriteras.
+          </p>
+          <p class="lead">
+            Syftet med sidan ar att minimera friktion till kontakt. Besokaren ska kunna fylla i
+            relevant behov och ga vidare till dialog utan onodiga beslut.
+          </p>
+          <div class="hero-actions">
+            <a class="button-secondary" href="#rekrytering">Ankarpunkt: Rekrytering</a>
+            <a class="button-secondary" href="#employer-branding">Ankarpunkt: Employer Branding</a>
+          </div>
+        </section>
+
+        <section class="section" id="rekrytering">
+          <h2>Kontaktformular med kontext</h2>
+          <p class="module-status-line">
+            <span class="module-badge ny">Ny föreslagen</span>
+            Modulstatus: Ny kontaktmodul med spar-forifyllning utifran tidigare val.
+          </p>
+          <p>
+            Har presenteras ett formulär dar sparval kan forifyllas automatiskt beroende pa var
+            besokaren kom ifran.
+          </p>
+          <form class="form-shell">
+            <div class="field-row">
+              <label>
+                Namn
+                <input type="text" placeholder="Har fyller besokaren namn" />
+              </label>
+              <label>
+                Foretag
+                <input type="text" placeholder="Har fyller besokaren foretag" />
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label>
+                E-post
+                <input type="email" placeholder="Har fyller besokaren e-post" />
+              </label>
+              <label>
+                Spar / behov
+                <select id="track-select">
+                  <option value="rekrytering">Rekrytering</option>
+                  <option value="employer-branding">Employer Branding</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Kort beskrivning av behov
+              <textarea placeholder="Har beskriver besokaren problem, scope och malbild"></textarea>
+            </label>
+
+            <div class="hero-actions">
+              <button class="button" type="button">Primar CTA: Skicka forfragan</button>
+              <button class="button-secondary" type="button">Sekundar CTA: Boka mote</button>
+            </div>
+          </form>
+
+          <div class="info-bar" id="context-note">
+            Kontextnotis: Om besokaren kommer fran en tjanstesida visas det valda sparvalet har.
+          </div>
+        </section>
+
+        <section class="section" id="employer-branding">
+          <h2>Kontaktuppgifter och alternativ kanal</h2>
+          <p class="module-status-line">
+            <span class="module-badge befintlig">Befintlig</span>
+            Modulstatus: Kompletterande kontaktvagar behalls for olika preferenser.
+          </p>
+          <p>
+            Har visas kompletterande kontaktvagar for besokare som vill ta dialog utan formulär.
+          </p>
+          <div class="grid-3">
+            <article class="card">
+              <h3>Direktkontakt</h3>
+              <p>Har visas kontaktvag till team med tydlig responstid.</p>
+            </article>
+            <article class="card">
+              <h3>Motesbokning</h3>
+              <p>Har visas alternativ for att boka strategiskt introduktionsmote.</p>
+            </article>
+            <article class="card">
+              <h3>Kontor och narvaro</h3>
+              <p>Har visas geografisk narvaro och praktisk kontaktinformation.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>Sidans roll i flodet</h4>
+          <p class="subtle">Sista steg i konverteringslogiken: Start/Tjanst/Case -> Kontakt.</p>
+        </div>
+        <div>
+          <h4>Relaterade sidor</h4>
+          <ul>
+            <li><a href="rekrytering.html">Rekrytering</a></li>
+            <li><a href="employer-branding.html">Employer Branding</a></li>
+            <li><a href="kundcase-apoteket.html">Exempelcase</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Sekundar navigation</h4>
+          <ul>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="om-oss.html">Om oss</a></li>
+            <li><a href="index.html">Start</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const select = document.getElementById("track-select");
+        const note = document.getElementById("context-note");
+        const hash = (window.location.hash || "").replace("#", "").toLowerCase();
+
+        if (hash === "rekrytering") {
+          select.value = "rekrytering";
+          note.textContent =
+            "Kontextnotis: Besokaren kom in via Rekrytering. Sparval ar forifyllt till Rekrytering.";
+        }
+
+        if (hash === "employer-branding") {
+          select.value = "employer-branding";
+          note.textContent =
+            "Kontextnotis: Besokaren kom in via Employer Branding. Sparval ar forifyllt till Employer Branding.";
+        }
+      })();
+    </script>
+  </body>
+</html>
