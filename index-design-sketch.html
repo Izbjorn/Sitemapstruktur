@@ -78,26 +78,19 @@
         min-height: 70px;
         display: grid;
         align-items: center;
-        grid-template-columns: 1fr auto;
-        gap: 16px;
+        grid-template-columns: 1fr;
+        gap: 0;
       }
 
       .brand {
         text-decoration: none;
         color: inherit;
-        display: inline-flex;
-        flex-direction: column;
-        gap: 4px;
+        display: inline-block;
       }
 
       .brand strong {
         font-size: 1.24rem;
         letter-spacing: 0.02em;
-      }
-
-      .brand span {
-        font-size: 0.76rem;
-        color: var(--muted);
       }
 
       .nav {
@@ -134,14 +127,6 @@
         gap: 18px;
       }
 
-      .hero-kicker {
-        margin: 0;
-        text-transform: none;
-        letter-spacing: 0.01em;
-        font-size: 0.94rem;
-        color: var(--accent);
-      }
-
       h1,
       h2,
       h3,
@@ -152,7 +137,7 @@
 
       h1 {
         margin-top: 4px;
-        font-size: clamp(2rem, 4.8vw, 3.4rem);
+        font-size: clamp(2.8rem, 6.8vw, 5.4rem);
         line-height: 0.96;
         max-width: 16ch;
       }
@@ -529,18 +514,7 @@
       <div class="container header-row">
         <a class="brand" href="index-design-sketch.html">
           <strong>ODDWORK</strong>
-          <span>Employer branding och rekrytering</span>
         </a>
-
-        <nav class="nav" aria-label="Global navigation">
-          <a href="index-design-sketch.html">Start</a>
-          <a href="rekrytering.html">Rekrytering</a>
-          <a href="employer-branding.html">Employer Branding</a>
-          <a href="kundcase.html">Kundcase</a>
-          <a href="insights.html">Insights</a>
-          <a href="om-oss.html">Om oss</a>
-          <a href="kontakt.html">Kontakt</a>
-        </nav>
       </div>
     </header>
 
@@ -548,10 +522,9 @@
       <section class="hero">
         <div class="container hero-shell reveal">
           <div class="hero-copy">
-            <p class="hero-kicker">Find your odd.</p>
-            <h1>Valj vag: Employer Branding eller Rekrytering</h1>
+            <h1>Find your odd.</h1>
             <p class="hero-intro">
-              Tydligt vagval direkt i forsta skarmen. Kort intro har, fordjupning pa respektive
+              Valj vag direkt: Employer Branding eller Rekrytering. Fordjupning ligger pa respektive
               tjanstsida.
             </p>
             <div class="hero-choice-grid">
