@@ -44,23 +44,6 @@
         cursor: none;
       }
 
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0.28;
-        background-image: linear-gradient(rgba(199, 188, 173, 0.75) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(199, 188, 173, 0.6) 1px, transparent 1px);
-        background-size: 180px 180px;
-      }
-
-      body > * {
-        position: relative;
-        z-index: 1;
-      }
-
       a,
       button {
         cursor: none;
@@ -80,11 +63,11 @@
       }
 
       .header-row {
-        min-height: 58px;
-        display: grid;
+        min-height: 62px;
+        display: flex;
         align-items: center;
-        grid-template-columns: 1fr;
-        gap: 0;
+        gap: 10px;
+        flex-wrap: wrap;
       }
 
       .header-left {
@@ -101,41 +84,63 @@
       }
 
       .brand strong {
-        font-size: 1.02rem;
+        font-size: 1rem;
         letter-spacing: 0.02em;
       }
 
       .nav {
         display: flex;
         flex-wrap: wrap;
-        gap: 2px;
+        justify-content: flex-start;
+        gap: 4px;
       }
 
       .nav a {
         text-decoration: none;
         color: inherit;
         font-size: 0.78rem;
-        padding: 4px 7px;
-        border: 1px solid transparent;
-        border-radius: 999px;
+        padding: 2px 4px;
+        border: none;
+        border-radius: 0;
       }
 
       .nav a:hover,
       .nav a:focus-visible {
-        border-color: var(--line);
+        color: var(--accent);
+        box-shadow: none;
+        text-shadow: 0 0 14px rgba(244, 90, 31, 0.38);
         outline: none;
       }
 
       .hero {
-        min-height: auto;
-        display: grid;
-        align-items: center;
-        padding: 22px 0 30px;
+        padding: 14px 0 28px;
       }
 
       .hero-shell {
+        position: relative;
+        min-height: min(76vh, 720px);
         display: grid;
-        gap: 14px;
+        place-items: center;
+        padding: clamp(22px, 4vw, 42px);
+        border-radius: 18px;
+        overflow: hidden;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(6, 10, 15, 0.38) 0%,
+            rgba(6, 10, 15, 0.52) 55%,
+            rgba(6, 10, 15, 0.66) 100%
+          ),
+          url("https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=2000");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-copy {
+        width: min(940px, 100%);
+        display: grid;
+        gap: 16px;
+        justify-items: center;
+        text-align: center;
       }
 
       h1,
@@ -147,75 +152,58 @@
       }
 
       h1 {
-        margin-top: 4px;
-        font-size: clamp(2.2rem, 5.8vw, 4.4rem);
-        line-height: 0.96;
-        max-width: 16ch;
-      }
-
-      .hero-intro {
         margin: 0;
-        color: var(--muted);
-        max-width: 72ch;
-        font-size: 0.9rem;
+        color: #fff;
+        font-size: clamp(2.8rem, 8vw, 6.2rem);
+        line-height: 0.9;
+        letter-spacing: 0.005em;
+        max-width: 12ch;
+        text-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
       }
 
       .hero-choice-grid {
+        width: auto;
         display: flex;
-        gap: 10px;
+        justify-content: center;
         flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 6px;
       }
 
       .hero-choice {
-        flex: 1 1 360px;
-        min-height: 182px;
+        min-height: auto;
         border: none;
-        border-radius: 14px;
-        padding: 12px;
+        border-radius: 0;
+        padding: 0;
         text-decoration: none;
-        color: var(--ink);
-        background: #fff;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-        display: grid;
-        align-content: space-between;
-        gap: 12px;
-        transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        color: #fff;
+        background: none;
+        backdrop-filter: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: text-shadow 0.2s ease, color 0.2s ease;
       }
 
       .hero-choice:hover,
       .hero-choice:focus-visible {
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
-        transform: translateY(-2px);
+        background: none;
+        box-shadow: none;
         outline: none;
       }
 
       .hero-choice h2 {
-        font-size: clamp(1.18rem, 1.9vw, 1.55rem);
-        line-height: 1.04;
-      }
-
-      .hero-choice p {
         margin: 0;
-        color: var(--muted);
-        max-width: 42ch;
-        font-size: 0.84rem;
+        color: #fff;
+        font-size: clamp(1.08rem, 2vw, 1.46rem);
+        line-height: 1.04;
+        transition: color 0.2s ease, text-shadow 0.2s ease;
       }
 
-      .choice-cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: fit-content;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        padding: 7px 12px;
-        font-size: 0.84rem;
-      }
-
-      .hero-choice:hover .choice-cta,
-      .hero-choice:focus-visible .choice-cta {
-        border-color: var(--accent);
+      .hero-choice:hover h2,
+      .hero-choice:focus-visible h2 {
+        color: #ffd5bd;
+        text-shadow: 0 0 18px rgba(244, 90, 31, 0.52);
       }
 
       .hero-cta {
@@ -231,22 +219,26 @@
         justify-content: center;
         text-decoration: none;
         color: var(--ink);
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 9px 14px;
+        border: none;
+        border-radius: 0;
+        padding: 0;
         font-size: 0.9rem;
+        line-height: 1.1;
+        transition: color 0.2s ease, text-shadow 0.2s ease;
       }
 
       .btn:hover,
       .btn:focus-visible {
-        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: none;
+        text-shadow: 0 0 14px rgba(244, 90, 31, 0.38);
         outline: none;
       }
 
       .btn.primary {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #fff;
+        background: none;
+        border: none;
+        color: var(--accent);
       }
 
       .ticker {
@@ -282,7 +274,6 @@
 
       .section {
         padding: 40px 0;
-        border-bottom: 1px solid var(--line);
       }
 
       .section-head {
@@ -348,7 +339,7 @@
         width: 160px;
         aspect-ratio: 1 / 1;
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-        animation: bubbleA 10.5s ease-in-out infinite;
+        animation: none;
       }
 
       .story-card.size-s {
@@ -389,6 +380,26 @@
 
       .story-card.motion-c {
         animation-name: bubbleC;
+      }
+
+      .story-card.motion-a:hover,
+      .story-card.motion-a:focus-within {
+        animation: bubbleA 2.6s ease-in-out infinite;
+      }
+
+      .story-card.motion-b:hover,
+      .story-card.motion-b:focus-within {
+        animation: bubbleB 2.8s ease-in-out infinite;
+      }
+
+      .story-card.motion-c:hover,
+      .story-card.motion-c:focus-within {
+        animation: bubbleC 2.7s ease-in-out infinite;
+      }
+
+      .story-card:hover,
+      .story-card:focus-within {
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22), 0 0 24px rgba(244, 90, 31, 0.34);
       }
 
       .story-card::after {
@@ -436,47 +447,71 @@
         z-index: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 6px;
-        padding: 14px;
+        justify-content: flex-end;
+        align-items: flex-start;
+        text-align: left;
+        gap: 3px;
+        padding: 10px;
       }
 
       .bubble-tag {
-        display: inline-flex;
-        width: fit-content;
-        padding: 2px 8px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.55);
-        font-size: 0.58rem;
-        letter-spacing: 0.12em;
+        display: block;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        font-size: 0.52rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.95);
+        color: rgba(255, 255, 255, 0.82);
       }
 
-      .story-card h3 {
-        margin: 0;
-        max-width: 11ch;
-        font-size: clamp(0.88rem, 1.02vw, 1rem);
+      .bubble-mini {
+        display: block;
+        font-size: 0.57rem;
         line-height: 1.12;
-        color: #fff;
-      }
-
-      .story-card p {
-        margin: 0;
-        max-width: 16ch;
-        color: rgba(255, 255, 255, 0.84);
-        font-size: 0.67rem;
-        line-height: 1.2;
+        letter-spacing: 0.03em;
+        color: rgba(255, 255, 255, 0.9);
       }
 
       .closing {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 16px;
+        align-items: stretch;
+      }
+
+      .closing-media {
+        position: relative;
+        min-height: 390px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #111;
+      }
+
+      .closing-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .closing-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0.08) 58%, rgba(0, 0, 0, 0) 100%);
+      }
+
+      .closing-copy {
         border: none;
-        border-radius: 14px;
-        background: #fff;
-        padding: 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.92);
+        padding: 24px 20px;
         box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+        display: grid;
+        align-content: center;
+        gap: 12px;
+        transform: translateY(var(--shift, 0px));
       }
 
       .closing h2 {
@@ -490,8 +525,23 @@
         font-size: 0.86rem;
       }
 
-      .cursor-glow,
-      .cursor-bubble {
+      .closing-statement {
+        margin: 0;
+        max-width: 30ch;
+        color: var(--ink);
+        font-size: clamp(1.45rem, 3.2vw, 2.5rem);
+        line-height: 1.04;
+        letter-spacing: -0.01em;
+      }
+
+      .closing-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .cursor-comet,
+      .cursor-trail {
         position: fixed;
         top: 0;
         left: 0;
@@ -500,25 +550,26 @@
         transform: translate(-100px, -100px);
       }
 
-      .cursor-glow {
-        width: 44px;
-        height: 44px;
-        border-radius: 999px;
-        background: radial-gradient(circle, rgba(244, 90, 31, 0.42) 0%, rgba(244, 90, 31, 0) 72%);
-        filter: blur(1px);
+      .cursor-comet {
+        width: 18px;
+        height: 4px;
+        border-radius: 2px;
+        transform-origin: left center;
+        background: linear-gradient(90deg, rgba(255, 190, 150, 0.95) 0%, rgba(255, 142, 77, 0.9) 45%, rgba(244, 90, 31, 0) 100%);
+        box-shadow: 0 0 10px rgba(244, 90, 31, 0.68), 0 0 24px rgba(244, 90, 31, 0.42);
       }
 
-      .cursor-bubble {
+      .cursor-trail {
         width: 12px;
-        height: 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(244, 90, 31, 0.7);
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(3px);
+        height: 2px;
+        border-radius: 2px;
+        transform-origin: left center;
+        background: linear-gradient(90deg, rgba(255, 168, 114, 0.86) 0%, rgba(244, 90, 31, 0) 100%);
+        opacity: 0.68;
       }
 
-      .cursor-glow.active {
-        transform: scale(1.5);
+      .cursor-comet.active {
+        box-shadow: 0 0 12px rgba(255, 142, 77, 0.96), 0 0 28px rgba(244, 90, 31, 0.84), 0 0 42px rgba(244, 90, 31, 0.56);
       }
 
       .reveal {
@@ -581,7 +632,6 @@
       }
 
       @media (max-width: 1120px) {
-        .header-row,
         .story {
           grid-template-columns: 1fr;
         }
@@ -606,6 +656,23 @@
         .story-card.size-xl {
           width: 196px;
         }
+
+        .closing {
+          grid-template-columns: 1fr;
+        }
+
+        .closing-media {
+          min-height: 300px;
+        }
+
+        .closing-copy {
+          transform: none;
+        }
+
+        .closing-statement {
+          max-width: 32ch;
+          font-size: clamp(1.2rem, 4.2vw, 1.8rem);
+        }
       }
 
       @media (max-width: 760px) {
@@ -615,13 +682,22 @@
           cursor: auto;
         }
 
-        .cursor-glow,
-        .cursor-bubble {
+        .cursor-comet,
+        .cursor-trail {
           display: none;
         }
 
         .nav {
           gap: 2px;
+        }
+
+        .hero-shell {
+          min-height: 58vh;
+          padding: 20px 14px;
+        }
+
+        .hero-choice-grid {
+          gap: 16px;
         }
 
         .nav a {
@@ -673,12 +749,8 @@
           margin-bottom: 0;
         }
 
-        .story-card h3 {
-          font-size: 0.82rem;
-        }
-
-        .story-card p {
-          display: none;
+        .bubble-mini {
+          font-size: 0.52rem;
         }
 
         .section {
@@ -688,8 +760,7 @@
     </style>
   </head>
   <body>
-    <div class="cursor-glow" aria-hidden="true"></div>
-    <div class="cursor-bubble" aria-hidden="true"></div>
+    <div class="cursor-comet" aria-hidden="true"></div>
 
     <header class="header">
       <div class="container header-row">
@@ -698,7 +769,6 @@
             <strong>ODDWORK</strong>
           </a>
           <nav class="nav" aria-label="Global navigation">
-            <a href="index-design-sketch.html">Start</a>
             <a href="employer-branding.html">Employer Branding</a>
             <a href="rekrytering.html">Rekrytering</a>
             <a href="kundcase.html">Kundcase</a>
@@ -713,28 +783,13 @@
       <section class="hero">
         <div class="container hero-shell reveal">
           <div class="hero-copy">
-            <h1>Find your odd.</h1>
-            <p class="hero-intro">
-              Employer branding och rekrytering for bolag som vill flytta position och resultat.
-            </p>
+            <h1>find your odd</h1>
             <div class="hero-choice-grid">
               <a class="hero-choice" href="employer-branding.html">
-                <div>
-                  <h2>Employer Branding</h2>
-                  <p>
-                    Bygg ett arbetsgivarvarumarke som attraherar ratt kandidater over tid.
-                  </p>
-                </div>
-                <span class="choice-cta">Ga till Employer Branding</span>
+                <h2>Employer Branding</h2>
               </a>
               <a class="hero-choice" href="rekrytering.html">
-                <div>
-                  <h2>Rekrytering</h2>
-                  <p>
-                    Tillsatt kritiska roller snabbare med hog kvalitet och stark kandidatupplevelse.
-                  </p>
-                </div>
-                <span class="choice-cta">Ga till Rekrytering</span>
+                <h2>Rekrytering</h2>
               </a>
             </div>
           </div>
@@ -769,10 +824,6 @@
       <section class="section reveal">
         <div class="container story">
           <aside class="story-sticky">
-            <h2>Case och insights i bubblor</h2>
-            <p>
-              Utvalda kundcase och insikter som visar vad vi gor och vilken effekt arbetet skapar.
-            </p>
             <div class="hero-cta">
               <a class="btn" href="kundcase.html">Se kundcase</a>
               <a class="btn" href="insights.html">Se insights</a>
@@ -788,10 +839,7 @@
               />
               <div class="story-copy">
                 <span class="bubble-tag">Case</span>
-                <h3>Case: Employer Branding</h3>
-                <p>
-                  Fran strategi till aktivering i prioriterade malgrupper.
-                </p>
+                <span class="bubble-mini">Employer Branding</span>
               </div>
             </article>
 
@@ -802,18 +850,14 @@
               />
               <div class="story-copy">
                 <span class="bubble-tag">Case</span>
-                <h3>Case: Rekrytering</h3>
-                <p>
-                  Tydlig kandidatupplevelse med tempo i komplex tillsattning.
-                </p>
+                <span class="bubble-mini">Rekrytering</span>
               </div>
             </article>
 
             <article class="story-card insight-card size-s offset-3 motion-c">
               <div class="story-copy">
                 <span class="bubble-tag">Insight</span>
-                <h3>Guide: EVP i praktiken</h3>
-                <p>Sa knyter ni budskap till verklig kandidatresa.</p>
+                <span class="bubble-mini">EVP i praktiken</span>
               </div>
             </article>
 
@@ -824,26 +868,21 @@
               />
               <div class="story-copy">
                 <span class="bubble-tag">Case</span>
-                <h3>Case: Partnerskap over tid</h3>
-                <p>
-                  Lopande forbattring genom uppfoljning, larande och ny aktivering.
-                </p>
+                <span class="bubble-mini">Langsiktigt partnerskap</span>
               </div>
             </article>
 
             <article class="story-card insight-card size-s offset-2 motion-a">
               <div class="story-copy">
                 <span class="bubble-tag">Insight</span>
-                <h3>Analys: Time-to-hire</h3>
-                <p>Vad som verkligen kortar ledtid utan att tappa kvalitet.</p>
+                <span class="bubble-mini">Time-to-hire</span>
               </div>
             </article>
 
             <article class="story-card insight-card size-l offset-3 motion-c">
               <div class="story-copy">
                 <span class="bubble-tag">Insight</span>
-                <h3>Metod: Kanalval som fungerar</h3>
-                <p>Tre principer for mer relevant raddvidd i malgrupper.</p>
+                <span class="bubble-mini">Kanalval</span>
               </div>
             </article>
           </div>
@@ -852,14 +891,21 @@
 
       <section class="section reveal">
         <div class="container closing">
-          <h2>Redo att accelerera?</h2>
-          <p>
-            Boka ett forsta mote sa tar vi fram ett upplagg for era malgrupper, era roller och era
-            affarsmal.
-          </p>
-          <div class="hero-cta">
-            <a class="btn primary" href="kontakt.html">Boka mote</a>
-            <a class="btn" href="kundcase.html">Se fler kundcase</a>
+          <div class="closing-media">
+            <img
+              src="https://oddwork.se/app/uploads/Oddwork-Photoshoot2025-2N8A0518-5-HIGH-scaled.jpg"
+              alt="Oddwork team"
+            />
+          </div>
+          <div class="closing-copy" data-scroll-shift>
+            <p class="closing-statement">
+              Vi bygger arbetsgivarvarumarken och rekryteringsfloden med tydlig riktning, hog
+              kreativ niva och matbar effekt i varje steg.
+            </p>
+            <div class="closing-links">
+              <a class="btn primary" href="kontakt.html">Boka mote</a>
+              <a class="btn" href="kundcase.html">Se fler kundcase</a>
+            </div>
           </div>
         </div>
       </section>
@@ -880,43 +926,99 @@
       );
       reveals.forEach((item) => revealObserver.observe(item));
 
-      const glow = document.querySelector(".cursor-glow");
-      const bubble = document.querySelector(".cursor-bubble");
+      const comet = document.querySelector(".cursor-comet");
       const finePointer = window.matchMedia("(pointer:fine)").matches;
 
-      if (finePointer) {
+      if (finePointer && comet) {
         let pointerX = window.innerWidth / 2;
         let pointerY = window.innerHeight / 2;
-        let glowX = pointerX;
-        let glowY = pointerY;
-        let bubbleX = pointerX;
-        let bubbleY = pointerY;
+        let cometX = pointerX;
+        let cometY = pointerY;
+        let angle = 0;
+        let lastX = pointerX;
+        let lastY = pointerY;
+
+        const trails = Array.from({ length: 9 }, (_, index) => {
+          const trail = document.createElement("div");
+          trail.className = "cursor-trail";
+          trail.style.opacity = `${Math.max(0.14, 0.68 - index * 0.065)}`;
+          trail.style.width = `${Math.max(4, 12 - index)}px`;
+          document.body.appendChild(trail);
+          return { el: trail, x: pointerX, y: pointerY };
+        });
 
         window.addEventListener("mousemove", (event) => {
           pointerX = event.clientX;
           pointerY = event.clientY;
+
+          const dx = pointerX - lastX;
+          const dy = pointerY - lastY;
+          if (Math.abs(dx) + Math.abs(dy) > 0.2) {
+            angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+            lastX = pointerX;
+            lastY = pointerY;
+          }
         });
 
-        const hoverTargets = document.querySelectorAll("a, button, .btn");
+        const hoverTargets = document.querySelectorAll("a, button, .btn, .hero-choice, .story-card");
         hoverTargets.forEach((target) => {
-          target.addEventListener("mouseenter", () => glow.classList.add("active"));
-          target.addEventListener("mouseleave", () => glow.classList.remove("active"));
+          target.addEventListener("mouseenter", () => comet.classList.add("active"));
+          target.addEventListener("mouseleave", () => comet.classList.remove("active"));
         });
 
         const animateCursor = () => {
-          glowX += (pointerX - glowX) * 0.22;
-          glowY += (pointerY - glowY) * 0.22;
-          bubbleX += (pointerX - bubbleX) * 0.11;
-          bubbleY += (pointerY - bubbleY) * 0.11;
+          cometX += (pointerX - cometX) * 0.34;
+          cometY += (pointerY - cometY) * 0.34;
+          comet.style.transform = `translate(${cometX - 2}px, ${cometY - 2}px) rotate(${angle}deg)`;
 
-          glow.style.transform = `translate(${glowX - 22}px, ${glowY - 22}px)`;
-          bubble.style.transform = `translate(${bubbleX - 6}px, ${bubbleY - 6}px)`;
+          let leadX = cometX;
+          let leadY = cometY;
+
+          trails.forEach((trail, index) => {
+            const ease = Math.max(0.08, 0.24 - index * 0.016);
+            trail.x += (leadX - trail.x) * ease;
+            trail.y += (leadY - trail.y) * ease;
+
+            const dx = leadX - trail.x;
+            const dy = leadY - trail.y;
+            const trailAngle = (Math.atan2(dy, dx) * 180) / Math.PI;
+            const length = Math.max(4, Math.min(14 - index * 0.8, Math.hypot(dx, dy) * 2.1 + 3));
+
+            trail.el.style.width = `${length}px`;
+            trail.el.style.transform = `translate(${trail.x}px, ${trail.y}px) rotate(${trailAngle}deg)`;
+
+            leadX = trail.x;
+            leadY = trail.y;
+          });
 
           requestAnimationFrame(animateCursor);
         };
 
         animateCursor();
       }
+
+      const scrollShiftTargets = document.querySelectorAll("[data-scroll-shift]");
+      const updateScrollShift = () => {
+        if (!scrollShiftTargets.length) return;
+
+        if (window.innerWidth <= 1120) {
+          scrollShiftTargets.forEach((el) => el.style.setProperty("--shift", "0px"));
+          return;
+        }
+
+        const vh = window.innerHeight || 1;
+        scrollShiftTargets.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const midpoint = rect.top + rect.height / 2;
+          const delta = (midpoint - vh * 0.5) / vh;
+          const shift = Math.max(-34, Math.min(34, -delta * 56));
+          el.style.setProperty("--shift", `${shift}px`);
+        });
+      };
+
+      updateScrollShift();
+      window.addEventListener("scroll", updateScrollShift, { passive: true });
+      window.addEventListener("resize", updateScrollShift);
     </script>
   </body>
 </html>
