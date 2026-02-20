@@ -71,25 +71,12 @@
         margin-inline: auto;
       }
 
-      .note {
-        padding: 8px 0;
-        border-bottom: 1px solid var(--line);
-        font-size: 0.74rem;
-        color: var(--muted);
-      }
-
-      .note b {
-        color: var(--accent);
-        font-weight: 700;
-      }
-
       .header {
         position: sticky;
         top: 0;
         z-index: 40;
         backdrop-filter: blur(12px);
         background: rgba(253, 253, 251, 0.9);
-        border-bottom: 1px solid var(--line);
       }
 
       .header-row {
@@ -144,7 +131,6 @@
         display: grid;
         align-items: center;
         padding: 22px 0 30px;
-        border-bottom: 1px solid var(--line);
       }
 
       .hero-shell {
@@ -202,13 +188,6 @@
         box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
         transform: translateY(-2px);
         outline: none;
-      }
-
-      .choice-index {
-        font-size: 0.73rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--muted);
       }
 
       .hero-choice h2 {
@@ -271,7 +250,6 @@
       }
 
       .ticker {
-        border-bottom: 1px solid var(--line);
         overflow: hidden;
         background: rgba(255, 255, 255, 0.82);
       }
@@ -350,52 +328,55 @@
       }
 
       .story-list {
-        position: relative;
         display: flex;
-        flex-wrap: wrap;
-        align-content: flex-end;
         align-items: flex-end;
-        gap: 10px;
-        min-height: 288px;
-        padding: 10px 2px;
-        isolation: isolate;
-      }
-
-      .story-list::before {
-        content: "";
-        position: absolute;
-        inset: -16px -10px -20px;
-        z-index: 0;
-        pointer-events: none;
-        opacity: 0.55;
-        background: radial-gradient(circle at 15% 88%, transparent 0 98px, rgba(193, 180, 165, 0.52) 99px 100px, transparent 101px),
-          radial-gradient(circle at 46% 84%, transparent 0 126px, rgba(193, 180, 165, 0.46) 127px 128px, transparent 129px),
-          radial-gradient(circle at 78% 88%, transparent 0 114px, rgba(193, 180, 165, 0.48) 115px 116px, transparent 117px);
+        gap: 12px;
+        min-height: 250px;
+        padding: 8px 2px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
       }
 
       .story-card {
+        flex: 0 0 auto;
         position: relative;
-        z-index: 1;
         border: none;
         border-radius: 50%;
         overflow: hidden;
         background: #0f0f0f;
-        width: 168px;
+        width: 160px;
         aspect-ratio: 1 / 1;
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-        animation: bubbleA 8.2s ease-in-out infinite;
+        animation: bubbleA 10.5s ease-in-out infinite;
       }
 
       .story-card.size-s {
-        width: 156px;
+        width: 132px;
       }
 
       .story-card.size-m {
-        width: 176px;
+        width: 162px;
       }
 
       .story-card.size-l {
-        width: 198px;
+        width: 196px;
+      }
+
+      .story-card.size-xl {
+        width: 228px;
+      }
+
+      .story-card.offset-1 {
+        margin-bottom: 24px;
+      }
+
+      .story-card.offset-2 {
+        margin-bottom: 8px;
+      }
+
+      .story-card.offset-3 {
+        margin-bottom: 32px;
       }
 
       .story-card.motion-a {
@@ -451,37 +432,43 @@
 
       .story-copy {
         position: absolute;
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
+        inset: 0;
         z-index: 1;
-        display: grid;
-        gap: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 6px;
+        padding: 14px;
       }
 
       .bubble-tag {
         display: inline-flex;
         width: fit-content;
-        padding: 3px 8px;
+        padding: 2px 8px;
         border-radius: 999px;
         border: 1px solid rgba(255, 255, 255, 0.55);
-        font-size: 0.62rem;
+        font-size: 0.58rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.95);
       }
 
       .story-card h3 {
-        font-size: clamp(0.9rem, 1.1vw, 1.05rem);
-        line-height: 1.08;
+        margin: 0;
+        max-width: 11ch;
+        font-size: clamp(0.88rem, 1.02vw, 1rem);
+        line-height: 1.12;
         color: #fff;
       }
 
       .story-card p {
         margin: 0;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 0.73rem;
-        line-height: 1.22;
+        max-width: 16ch;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 0.67rem;
+        line-height: 1.2;
       }
 
       .closing {
@@ -557,39 +544,39 @@
       @keyframes bubbleA {
         0%,
         100% {
-          transform: translate3d(0, 0, 0) rotate(0deg);
+          transform: translate3d(0, 0, 0);
         }
         30% {
-          transform: translate3d(7px, -14px, 0) rotate(-1deg);
+          transform: translate3d(2px, -4px, 0);
         }
         65% {
-          transform: translate3d(-6px, -8px, 0) rotate(1deg);
+          transform: translate3d(-2px, -2px, 0);
         }
       }
 
       @keyframes bubbleB {
         0%,
         100% {
-          transform: translate3d(0, 0, 0) rotate(0deg);
+          transform: translate3d(0, 0, 0);
         }
         35% {
-          transform: translate3d(-8px, -16px, 0) rotate(1deg);
+          transform: translate3d(-3px, -5px, 0);
         }
         70% {
-          transform: translate3d(6px, -10px, 0) rotate(-1deg);
+          transform: translate3d(2px, -3px, 0);
         }
       }
 
       @keyframes bubbleC {
         0%,
         100% {
-          transform: translate3d(0, 0, 0) rotate(0deg);
+          transform: translate3d(0, 0, 0);
         }
         28% {
-          transform: translate3d(5px, -11px, 0) rotate(1deg);
+          transform: translate3d(2px, -3px, 0);
         }
         72% {
-          transform: translate3d(-7px, -18px, 0) rotate(-1deg);
+          transform: translate3d(-3px, -5px, 0);
         }
       }
 
@@ -613,7 +600,11 @@
         }
 
         .story-card.size-l {
-          width: 188px;
+          width: 172px;
+        }
+
+        .story-card.size-xl {
+          width: 196px;
         }
       }
 
@@ -652,39 +643,42 @@
         }
 
         .story-card {
-          flex: 0 0 148px;
-          width: 148px;
+          flex: 0 0 136px;
+          width: 136px;
           animation: none;
         }
 
         .story-card.size-s,
         .story-card.size-m,
-        .story-card.size-l {
-          width: 148px;
+        .story-card.size-l,
+        .story-card.size-xl {
+          width: 136px;
         }
 
         .story-list {
-          overflow-x: auto;
-          overflow-y: hidden;
           gap: 10px;
           padding-bottom: 6px;
-          scrollbar-width: thin;
           flex-wrap: nowrap;
+          min-height: 0;
         }
 
         .story-copy {
-          left: 12px;
-          right: 12px;
-          bottom: 12px;
-          gap: 3px;
+          gap: 4px;
+          padding: 10px;
+        }
+
+        .story-card.offset-1,
+        .story-card.offset-2,
+        .story-card.offset-3 {
+          margin-bottom: 0;
         }
 
         .story-card h3 {
-          font-size: 0.95rem;
+          font-size: 0.82rem;
         }
 
         .story-card p {
-          font-size: 0.74rem;
+          display: none;
         }
 
         .section {
@@ -696,10 +690,6 @@
   <body>
     <div class="cursor-glow" aria-hidden="true"></div>
     <div class="cursor-bubble" aria-hidden="true"></div>
-
-    <div class="container note">
-      <b>Designskiss v2:</b> Samma struktur, men med mer visuell effekt och kompakt skala.
-    </div>
 
     <header class="header">
       <div class="container header-row">
@@ -725,28 +715,23 @@
           <div class="hero-copy">
             <h1>Find your odd.</h1>
             <p class="hero-intro">
-              Valj vag direkt: Employer Branding eller Rekrytering. Fordjupning ligger pa respektive
-              tjanstsida.
+              Employer branding och rekrytering for bolag som vill flytta position och resultat.
             </p>
             <div class="hero-choice-grid">
               <a class="hero-choice" href="employer-branding.html">
                 <div>
-                  <span class="choice-index">Spar 01</span>
                   <h2>Employer Branding</h2>
                   <p>
-                    For er som vill tydliggora arbetsgivarvarumarke, skarpa budskap och bygga
-                    langsiktig attraktion i prioriterade malgrupper.
+                    Bygg ett arbetsgivarvarumarke som attraherar ratt kandidater over tid.
                   </p>
                 </div>
                 <span class="choice-cta">Ga till Employer Branding</span>
               </a>
               <a class="hero-choice" href="rekrytering.html">
                 <div>
-                  <span class="choice-index">Spar 02</span>
                   <h2>Rekrytering</h2>
                   <p>
-                    For er som vill tillsatta kritiska roller med hog kvalitet, tydlig
-                    kandidatupplevelse och snabbare process i komplex organisation.
+                    Tillsatt kritiska roller snabbare med hog kvalitet och stark kandidatupplevelse.
                   </p>
                 </div>
                 <span class="choice-cta">Ga till Rekrytering</span>
@@ -786,8 +771,7 @@
           <aside class="story-sticky">
             <h2>Case och insights i bubblor</h2>
             <p>
-              En kompakt effektsektion med smal skala. Case och insikter blandas for att visa
-              faktisk leverans och tankeledarskap i samma vy.
+              Utvalda kundcase och insikter som visar vad vi gor och vilken effekt arbetet skapar.
             </p>
             <div class="hero-cta">
               <a class="btn" href="kundcase.html">Se kundcase</a>
@@ -797,7 +781,7 @@
           </aside>
 
           <div class="story-list">
-            <article class="story-card size-m motion-a">
+            <article class="story-card size-m offset-1 motion-a">
               <img
                 src="https://oddwork.se/app/uploads/Oddwork-Photoshoot2025-2N8A0518-5-HIGH-scaled.jpg"
                 alt="Case 1"
@@ -811,7 +795,7 @@
               </div>
             </article>
 
-            <article class="story-card size-l motion-b">
+            <article class="story-card size-xl offset-2 motion-b">
               <img
                 src="https://oddwork.se/app/uploads/Oddwork-Photoshoot2025-2N8A1040-4-HIGH-1920x1280.jpg"
                 alt="Case 2"
@@ -825,7 +809,7 @@
               </div>
             </article>
 
-            <article class="story-card insight-card size-s motion-c">
+            <article class="story-card insight-card size-s offset-3 motion-c">
               <div class="story-copy">
                 <span class="bubble-tag">Insight</span>
                 <h3>Guide: EVP i praktiken</h3>
@@ -833,7 +817,7 @@
               </div>
             </article>
 
-            <article class="story-card size-m motion-b">
+            <article class="story-card size-m offset-1 motion-b">
               <img
                 src="https://oddwork.se/app/uploads/Oddwork-Photoshoot2025-2N8A0311-4-HIGH-scaled.jpg"
                 alt="Case 3"
@@ -847,7 +831,7 @@
               </div>
             </article>
 
-            <article class="story-card insight-card size-s motion-a">
+            <article class="story-card insight-card size-s offset-2 motion-a">
               <div class="story-copy">
                 <span class="bubble-tag">Insight</span>
                 <h3>Analys: Time-to-hire</h3>
@@ -855,7 +839,7 @@
               </div>
             </article>
 
-            <article class="story-card insight-card size-m motion-c">
+            <article class="story-card insight-card size-l offset-3 motion-c">
               <div class="story-copy">
                 <span class="bubble-tag">Insight</span>
                 <h3>Metod: Kanalval som fungerar</h3>
@@ -868,14 +852,14 @@
 
       <section class="section reveal">
         <div class="container closing">
-          <h2>Nasta steg</h2>
+          <h2>Redo att accelerera?</h2>
           <p>
-            Om designriktningen ar ratt bygger jag samma visuella system till alla undersidor sa ni
-            kan klicka igenom hela flodet i samma stil.
+            Boka ett forsta mote sa tar vi fram ett upplagg for era malgrupper, era roller och era
+            affarsmal.
           </p>
           <div class="hero-cta">
             <a class="btn primary" href="kontakt.html">Boka mote</a>
-            <a class="btn" href="index.html">Se sitemap-prototypen</a>
+            <a class="btn" href="kundcase.html">Se fler kundcase</a>
           </div>
         </div>
       </section>
