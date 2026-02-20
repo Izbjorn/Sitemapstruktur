@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oddwork Layout Study</title>
+    <title>Oddwork Design Sketch</title>
     <style>
       @font-face {
         font-family: "EuropaGrotesk";
@@ -15,13 +15,13 @@
       }
 
       :root {
-        --paper: #f4f4f2;
-        --white: #ffffff;
-        --ink: #0f0f10;
-        --muted: #5c5c5f;
-        --orange: #f45a1f;
-        --shadow: 0 18px 40px rgba(15, 15, 16, 0.12);
-        --wrap: 96vw;
+        --bg: #fdfdfb;
+        --ink: #121212;
+        --muted: #5b5b5b;
+        --line: #dcd7cf;
+        --accent: #f45a1f;
+        --accent-soft: rgba(244, 90, 31, 0.14);
+        --max: 1400px;
       }
 
       * {
@@ -32,15 +32,14 @@
       body {
         margin: 0;
         padding: 0;
-        background: var(--paper);
+        background: var(--bg);
         color: var(--ink);
       }
 
       body {
         font-family: "EuropaGrotesk", "Avenir Next", "Segoe UI", sans-serif;
-        line-height: 1.08;
-        letter-spacing: 0.002em;
-        overflow-x: hidden;
+        line-height: 1.35;
+        letter-spacing: 0.004em;
         cursor: none;
       }
 
@@ -49,485 +48,383 @@
         cursor: none;
       }
 
-      .wrap {
-        width: min(var(--wrap), 1680px);
+      .container {
+        width: min(1320px, 92vw);
         margin-inline: auto;
       }
 
-      .site-header {
+      .note {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.74rem;
+        color: var(--muted);
+      }
+
+      .note b {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .header {
         position: sticky;
         top: 0;
-        z-index: 90;
-        background: rgba(244, 244, 242, 0.94);
-        backdrop-filter: blur(9px);
+        z-index: 40;
+        backdrop-filter: blur(12px);
+        background: rgba(253, 253, 251, 0.9);
+        border-bottom: 1px solid var(--line);
       }
 
       .header-row {
-        min-height: 86px;
+        min-height: 70px;
         display: grid;
-        grid-template-columns: 1fr auto;
         align-items: center;
-        gap: 24px;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
       }
 
       .brand {
         text-decoration: none;
         color: inherit;
-        display: grid;
-        grid-template-columns: 132px auto;
-        gap: 14px;
-        align-items: center;
-      }
-
-      .brand-media {
-        width: 132px;
-        height: 56px;
-        border-radius: 3px;
-        object-fit: cover;
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4px;
       }
 
       .brand strong {
-        display: block;
-        font-size: clamp(1.45rem, 2.2vw, 2.2rem);
+        font-size: 1.24rem;
         letter-spacing: 0.02em;
-        color: var(--ink);
       }
 
-      .brand-tag {
-        display: block;
-        margin-top: 2px;
-        font-size: 0.78rem;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
+      .brand span {
+        font-size: 0.76rem;
         color: var(--muted);
       }
 
-      .menu-toggle {
-        appearance: none;
-        border: none;
-        background: transparent;
-        color: var(--ink);
-        font-size: clamp(1.2rem, 2vw, 1.6rem);
-        padding: 6px 2px;
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
       }
 
-      .menu-panel {
-        position: fixed;
-        inset: 0;
-        z-index: 100;
-        background: #0d0d0f;
-        color: #f7f7f5;
-        display: grid;
-        align-content: center;
-        justify-items: center;
-        gap: 16px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.24s ease;
-      }
-
-      body.menu-open .menu-panel {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .menu-close {
-        appearance: none;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: transparent;
-        color: #fff;
-        border-radius: 999px;
-        font-size: 0.95rem;
-        padding: 8px 16px;
-        position: absolute;
-        top: 24px;
-        right: 24px;
-      }
-
-      .menu-links {
-        display: grid;
-        gap: 10px;
-        text-align: center;
-      }
-
-      .menu-links a {
+      .nav a {
         text-decoration: none;
         color: inherit;
-        font-size: clamp(1.8rem, 6vw, 4.2rem);
+        font-size: 0.9rem;
+        padding: 7px 11px;
+        border: 1px solid transparent;
+        border-radius: 999px;
       }
 
-      .home-hero {
-        min-height: calc(100vh - 86px);
-        display: grid;
-        align-content: start;
-        padding: 26px 0 70px;
-        background: var(--paper);
-      }
-
-      .tagline {
-        margin: 0;
-        font-size: clamp(0.98rem, 1.1vw, 1.2rem);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--orange);
-      }
-
-      .hero-title {
-        margin: 14px 0 0;
-        font-size: clamp(3.1rem, 9.4vw, 8.9rem);
-        font-weight: 600;
-        line-height: 0.9;
-        letter-spacing: -0.01em;
-        max-width: 16ch;
-      }
-
-      .hero-meta {
-        margin-top: 64px;
-        display: grid;
-        grid-template-columns: 1fr 1.3fr;
-        gap: 30px;
-        align-items: end;
-      }
-
-      .meta-left {
-        font-size: clamp(1.55rem, 2.7vw, 2.5rem);
-      }
-
-      .meta-right p {
-        margin: 0;
-        color: var(--muted);
-        font-size: clamp(1rem, 1.45vw, 1.45rem);
-        line-height: 1.2;
-      }
-
-      .chooser {
-        margin-top: 16px;
-        display: inline-flex;
-        align-items: center;
-        gap: 0;
-        background: #0f0f10;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-      }
-
-      .chooser a {
-        display: inline-flex;
-        text-decoration: none;
-        color: #fff;
-        padding: 12px 18px;
-        font-size: 1.04rem;
-        border-right: 1px solid rgba(255, 255, 255, 0.22);
-      }
-
-      .chooser a:last-child {
-        border-right: none;
-      }
-
-      .chooser a:hover,
-      .chooser a:focus-visible {
-        background: rgba(255, 255, 255, 0.08);
+      .nav a:hover,
+      .nav a:focus-visible {
+        border-color: var(--line);
         outline: none;
       }
 
-      .choice-stage {
-        background: var(--white);
-        border-radius: 0;
-        padding: 18px 0 26px;
-      }
-
-      .choice-grid {
+      .hero {
+        min-height: auto;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+        align-items: center;
+        padding: 30px 0 40px;
+        border-bottom: 1px solid var(--line);
       }
 
-      .choice-card {
-        position: relative;
-        text-decoration: none;
-        color: #fff;
-        min-height: 58vh;
-        padding: 28px;
-        overflow: hidden;
-        border-radius: 4px;
-        isolation: isolate;
-      }
-
-      .choice-card img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: scale(1.02);
-        transition: transform 0.45s ease;
-      }
-
-      .choice-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.62));
-      }
-
-      .choice-card:hover img,
-      .choice-card:focus-visible img {
-        transform: scale(1.07);
-      }
-
-      .choice-content {
-        position: relative;
-        z-index: 1;
-        height: 100%;
-        display: grid;
-        align-content: end;
-        gap: 14px;
-      }
-
-      .choice-label {
-        font-size: 0.8rem;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        opacity: 0.86;
-      }
-
-      .choice-content h2 {
-        margin: 0;
-        font-size: clamp(2.2rem, 4.7vw, 4.8rem);
-        line-height: 0.9;
-      }
-
-      .choice-content p {
-        margin: 0;
-        max-width: 40ch;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.04rem;
-        line-height: 1.22;
-      }
-
-      .choice-arrow {
-        font-size: 1.2rem;
-      }
-
-      .section {
-        padding: 88px 0;
-      }
-
-      .all-work {
-        background: var(--paper);
-      }
-
-      .all-work-grid {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: 0.8fr 1fr 0.65fr;
-        grid-template-areas:
-          "left intro right"
-          "left sub right";
-        align-items: stretch;
-      }
-
-      .all-photo {
-        position: relative;
-        overflow: hidden;
-        min-height: 320px;
-      }
-
-      .all-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .all-left {
-        grid-area: left;
-        min-height: 780px;
-      }
-
-      .all-right {
-        grid-area: right;
-        min-height: 780px;
-        opacity: 0.35;
-      }
-
-      .all-sub {
-        grid-area: sub;
-        min-height: 310px;
-        width: min(74%, 520px);
-        justify-self: center;
-      }
-
-      .all-intro {
-        grid-area: intro;
-        align-self: end;
+      .hero-shell {
         display: grid;
         gap: 18px;
       }
 
-      .all-intro h2 {
+      .hero-kicker {
         margin: 0;
-        font-size: clamp(2.8rem, 7.6vw, 6.7rem);
-        line-height: 0.9;
+        text-transform: none;
+        letter-spacing: 0.01em;
+        font-size: 0.94rem;
+        color: var(--accent);
       }
 
-      .all-intro p {
+      h1,
+      h2,
+      h3,
+      h4 {
         margin: 0;
-        max-width: 46ch;
-        color: var(--muted);
-        font-size: 1.08rem;
-        line-height: 1.26;
+        font-weight: 600;
       }
 
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        text-decoration: none;
-        width: fit-content;
-        border-radius: 10px;
-        background: #0f0f10;
-        color: #fff;
-        padding: 12px 16px;
-        font-size: 1rem;
+      h1 {
+        margin-top: 4px;
+        font-size: clamp(2rem, 4.8vw, 3.4rem);
+        line-height: 0.96;
+        max-width: 16ch;
       }
 
-      .trust-row {
-        background: var(--white);
-        padding: 24px 0;
-      }
-
-      .logos {
-        display: grid;
-        gap: 22px;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        align-items: center;
-      }
-
-      .logos img {
-        width: 100%;
-        max-height: 35px;
-        object-fit: contain;
-        filter: grayscale(1);
-        opacity: 0.74;
-      }
-
-      .impact {
-        position: relative;
-        min-height: 88vh;
-        display: grid;
-        align-items: end;
-        background: #0a0a0c;
-        color: #fff;
-        overflow: hidden;
-      }
-
-      .impact img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.52;
-      }
-
-      .impact .wrap {
-        position: relative;
-        z-index: 1;
-        padding-bottom: 70px;
-      }
-
-      .impact-number {
-        margin: 0;
-        font-size: 1.85rem;
-        opacity: 0.86;
-      }
-
-      .impact h2 {
-        margin: 18px 0 0;
-        font-size: clamp(2.7rem, 7.4vw, 7.1rem);
-        max-width: 12ch;
-      }
-
-      .impact p {
-        margin: 20px 0 0;
-        max-width: 40ch;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: clamp(1rem, 1.5vw, 1.32rem);
-        line-height: 1.24;
-      }
-
-      .impact .pill {
-        margin-top: 26px;
-      }
-
-      .insights-strip {
-        background: var(--paper);
-      }
-
-      .insights-bar {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        gap: 22px;
-        align-items: center;
-        padding: 18px 0;
-        border-top: 1px solid rgba(15, 15, 16, 0.16);
-        border-bottom: 1px solid rgba(15, 15, 16, 0.16);
-      }
-
-      .insights-bar h3 {
-        margin: 0;
-        font-size: clamp(1.5rem, 2.9vw, 2.8rem);
-      }
-
-      .insights-bar p {
+      .hero-intro {
         margin: 0;
         color: var(--muted);
-        line-height: 1.24;
+        max-width: 72ch;
+        font-size: 0.98rem;
       }
 
-      .insights-link {
-        text-decoration: none;
-        color: var(--ink);
-        font-size: 1rem;
-      }
-
-      .closing {
-        padding: 90px 0 110px;
-      }
-
-      .closing h2 {
-        margin: 0;
-        font-size: clamp(2.4rem, 6.8vw, 5.7rem);
-        max-width: 12ch;
-      }
-
-      .closing p {
-        margin: 14px 0 0;
-        max-width: 56ch;
-        color: var(--muted);
-        line-height: 1.25;
-      }
-
-      .closing-actions {
-        margin-top: 24px;
+      .hero-choice-grid {
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
       }
 
-      .closing-actions a {
+      .hero-choice {
+        flex: 1 1 360px;
+        min-height: 205px;
+        border: none;
+        border-radius: 14px;
+        padding: 16px;
         text-decoration: none;
-        border: 1px solid rgba(15, 15, 16, 0.2);
-        border-radius: 999px;
-        padding: 10px 16px;
         color: var(--ink);
+        background: #fff;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        display: grid;
+        align-content: space-between;
+        gap: 12px;
+        transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .closing-actions a:hover,
-      .closing-actions a:focus-visible {
-        border-color: var(--orange);
+      .hero-choice:hover,
+      .hero-choice:focus-visible {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
         outline: none;
+      }
+
+      .choice-index {
+        font-size: 0.73rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .hero-choice h2 {
+        font-size: clamp(1.35rem, 2.2vw, 2rem);
+        line-height: 1.04;
+      }
+
+      .hero-choice p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 42ch;
+        font-size: 0.9rem;
+      }
+
+      .choice-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        padding: 7px 12px;
+        font-size: 0.84rem;
+      }
+
+      .hero-choice:hover .choice-cta,
+      .hero-choice:focus-visible .choice-cta {
+        border-color: var(--accent);
+      }
+
+      .hero-cta {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 14px;
+        font-size: 0.9rem;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        border-color: var(--accent);
+        outline: none;
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      .ticker {
+        border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .ticker-track {
+        display: inline-block;
+        padding: 8px 0;
+        animation: move 22s linear infinite;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .ticker-track span {
+        display: inline-block;
+        margin-right: 34px;
+      }
+
+      .ticker-track b {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .section {
+        padding: 54px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        margin-bottom: 16px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        line-height: 1.06;
+      }
+
+      .section-head p {
+        margin: 8px 0 0;
+        max-width: 68ch;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .logo-row {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .logo-item {
+        border: none;
+        border-radius: 999px;
+        background: #fff;
+        padding: 12px;
+        min-height: 56px;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo-item img {
+        max-width: 100%;
+        max-height: 24px;
+        object-fit: contain;
+      }
+
+      .story {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 0.95fr 1.05fr;
+      }
+
+      .story-sticky {
+        position: sticky;
+        top: 84px;
+        align-self: start;
+        display: grid;
+        gap: 10px;
+      }
+
+      .story-sticky h2 {
+        font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+        line-height: 1.06;
+      }
+
+      .story-sticky p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 35ch;
+        font-size: 0.92rem;
+      }
+
+      .story-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .story-card {
+        border: none;
+        border-radius: 12px;
+        background: #fff;
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+      }
+
+      .story-card img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .story-card h3 {
+        font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+        line-height: 1.14;
+      }
+
+      .story-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .closing {
+        border: none;
+        border-radius: 14px;
+        background: #fff;
+        padding: 18px;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+      }
+
+      .insights-teaser {
+        border: none;
+        border-radius: 14px;
+        background: #fff;
+        padding: 18px;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+        display: grid;
+        gap: 8px;
+      }
+
+      .insights-teaser h2 {
+        font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+      }
+
+      .insights-teaser p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 62ch;
+        font-size: 0.92rem;
+      }
+
+      .closing h2 {
+        font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+      }
+
+      .closing p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        max-width: 56ch;
+        font-size: 0.92rem;
       }
 
       .cursor-glow,
@@ -536,30 +433,35 @@
         top: 0;
         left: 0;
         pointer-events: none;
-        z-index: 130;
-        transform: translate(-120px, -120px);
+        z-index: 100;
+        transform: translate(-100px, -100px);
       }
 
       .cursor-glow {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
         border-radius: 999px;
-        background: radial-gradient(circle, rgba(244, 90, 31, 0.38) 0%, rgba(244, 90, 31, 0) 74%);
+        background: radial-gradient(circle, rgba(244, 90, 31, 0.42) 0%, rgba(244, 90, 31, 0) 72%);
         filter: blur(1px);
       }
 
       .cursor-bubble {
-        width: 11px;
-        height: 11px;
+        width: 12px;
+        height: 12px;
         border-radius: 999px;
-        border: 1px solid rgba(244, 90, 31, 0.76);
-        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(244, 90, 31, 0.7);
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(3px);
+      }
+
+      .cursor-glow.active {
+        transform: scale(1.5);
       }
 
       .reveal {
         opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.72s ease, transform 0.72s ease;
+        transform: translateY(16px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
       }
 
       .reveal.in {
@@ -567,55 +469,24 @@
         transform: translateY(0);
       }
 
-      @media (max-width: 1220px) {
-        .hero-meta,
-        .all-work-grid,
-        .insights-bar {
-          grid-template-columns: 1fr;
+      @keyframes move {
+        from {
+          transform: translateX(0);
         }
-
-        .all-work-grid {
-          grid-template-areas:
-            "intro"
-            "left"
-            "sub"
-            "right";
-        }
-
-        .all-left,
-        .all-right,
-        .all-sub {
-          min-height: 420px;
-          width: 100%;
-          justify-self: stretch;
-        }
-
-        .all-right {
-          opacity: 1;
+        to {
+          transform: translateX(-50%);
         }
       }
 
-      @media (max-width: 900px) {
-        .choice-grid {
+      @media (max-width: 1120px) {
+        .header-row,
+        .story,
+        .logo-row {
           grid-template-columns: 1fr;
         }
 
-        .choice-card {
-          min-height: 48vh;
-        }
-
-        .logos {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 16px;
-        }
-
-        .brand {
-          grid-template-columns: 1fr;
-          gap: 4px;
-        }
-
-        .brand-media {
-          display: none;
+        .story-sticky {
+          position: static;
         }
       }
 
@@ -631,17 +502,17 @@
           display: none;
         }
 
-        .hero-title {
-          font-size: clamp(2.5rem, 14vw, 4.2rem);
+        .nav {
+          gap: 2px;
+        }
+
+        .nav a {
+          padding: 8px 10px;
+          font-size: 0.9rem;
         }
 
         .section {
-          padding: 62px 0;
-        }
-
-        .home-hero {
-          min-height: auto;
-          padding-bottom: 46px;
+          padding: 42px 0;
         }
       }
     </style>
@@ -650,182 +521,182 @@
     <div class="cursor-glow" aria-hidden="true"></div>
     <div class="cursor-bubble" aria-hidden="true"></div>
 
-    <header class="site-header">
-      <div class="wrap header-row">
-        <a class="brand" href="index-design-sketch.html" aria-label="Oddwork startsida">
-          <img
-            class="brand-media"
-            src="https://oddwork.se/app/uploads/MAQS-kundcase-1920x1357.jpg"
-            alt="Oddwork visual"
-          />
-          <div>
-            <strong>ODDWORK</strong>
-            <span class="brand-tag">Find your odd.</span>
-          </div>
+    <div class="container note">
+      <b>Designskiss:</b> Samma modulstruktur i kompakt layout (Wortell-inspirerad rytm och skalor).
+    </div>
+
+    <header class="header">
+      <div class="container header-row">
+        <a class="brand" href="index-design-sketch.html">
+          <strong>ODDWORK</strong>
+          <span>Employer branding och rekrytering</span>
         </a>
 
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-panel">
-          Menu
-        </button>
+        <nav class="nav" aria-label="Global navigation">
+          <a href="index-design-sketch.html">Start</a>
+          <a href="rekrytering.html">Rekrytering</a>
+          <a href="employer-branding.html">Employer Branding</a>
+          <a href="kundcase.html">Kundcase</a>
+          <a href="insights.html">Insights</a>
+          <a href="om-oss.html">Om oss</a>
+          <a href="kontakt.html">Kontakt</a>
+        </nav>
       </div>
     </header>
 
-    <aside class="menu-panel" id="menu-panel" aria-hidden="true">
-      <button class="menu-close" type="button">Close</button>
-      <nav class="menu-links" aria-label="Meny">
-        <a href="index-design-sketch.html">Start</a>
-        <a href="employer-branding.html">Employer Branding</a>
-        <a href="rekrytering.html">Rekrytering</a>
-        <a href="kundcase.html">Kundcase</a>
-        <a href="insights.html">Insights</a>
-        <a href="om-oss.html">Om oss</a>
-        <a href="kontakt.html">Kontakt</a>
-      </nav>
-    </aside>
-
     <main>
-      <section class="home-hero">
-        <div class="wrap reveal">
-          <p class="tagline">Find your odd.</p>
-          <h1 class="hero-title">
-            Employer Branding och Rekrytering for storbolag som vill attrahera, rekrytera och
-            behalla ratt kompetens.
-          </h1>
-
-          <div class="hero-meta">
-            <div class="meta-left">Employer Branding<br />& Rekrytering</div>
-            <div class="meta-right">
-              <p>
-                Vi bygger strategier och leverans som fungerar i verkligheten. Valj spar direkt,
-                och ga vidare till relevant metod, case och kontaktvag.
-              </p>
-              <div class="chooser" aria-label="Vagval">
-                <a href="employer-branding.html">Employer Branding</a>
-                <a href="rekrytering.html">Rekrytering</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="choice-stage section reveal">
-        <div class="wrap choice-grid">
-          <a class="choice-card" href="employer-branding.html">
-            <img
-              src="https://oddwork.se/app/uploads/Estrella-Kundcase-1920x1357.jpg"
-              alt="Employer branding"
-              data-parallax="-0.04"
-            />
-            <div class="choice-content">
-              <span class="choice-label">Spar 01</span>
-              <h2>Employer Branding</h2>
-              <p>Positionering, budskap och aktivering for malgrupper dar konkurrensen ar hog.</p>
-              <span class="choice-arrow">Discover +</span>
-            </div>
-          </a>
-
-          <a class="choice-card" href="rekrytering.html">
-            <img
-              src="https://oddwork.se/app/uploads/Saab-2-1-1920x1357.jpg"
-              alt="Rekrytering"
-              data-parallax="-0.04"
-            />
-            <div class="choice-content">
-              <span class="choice-label">Spar 02</span>
-              <h2>Rekrytering</h2>
-              <p>Tillsatt kritiska roller med kvalitet, tempo och kandidatupplevelse i samma flow.</p>
-              <span class="choice-arrow">Discover +</span>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="section all-work reveal">
-        <div class="wrap all-work-grid">
-          <figure class="all-photo all-left">
-            <img
-              src="https://oddwork.se/app/uploads/MAQS-kundcase-1920x1357.jpg"
-              alt="Case visual left"
-              data-parallax="0.04"
-            />
-          </figure>
-
-          <div class="all-intro">
-            <h2>All Work <sup>(100+)</sup></h2>
-            <p>
-              Ett urval case for att validera leveransniva, metod och effekt. Full fordjupning
-              ligger pa kundcasesidorna.
+      <section class="hero">
+        <div class="container hero-shell reveal">
+          <div class="hero-copy">
+            <p class="hero-kicker">Find your odd.</p>
+            <h1>Valj vag: Employer Branding eller Rekrytering</h1>
+            <p class="hero-intro">
+              Tydligt vagval direkt i forsta skarmen. Kort intro har, fordjupning pa respektive
+              tjanstsida.
             </p>
-            <a class="pill" href="kundcase.html">All Work &nbsp; Discover +</a>
+            <div class="hero-choice-grid">
+              <a class="hero-choice" href="employer-branding.html">
+                <div>
+                  <span class="choice-index">Spar 01</span>
+                  <h2>Employer Branding</h2>
+                  <p>
+                    For er som vill tydliggora arbetsgivarvarumarke, skarpa budskap och bygga
+                    langsiktig attraktion i prioriterade malgrupper.
+                  </p>
+                </div>
+                <span class="choice-cta">Ga till Employer Branding</span>
+              </a>
+              <a class="hero-choice" href="rekrytering.html">
+                <div>
+                  <span class="choice-index">Spar 02</span>
+                  <h2>Rekrytering</h2>
+                  <p>
+                    For er som vill tillsatta kritiska roller med hog kvalitet, tydlig
+                    kandidatupplevelse och snabbare process i komplex organisation.
+                  </p>
+                </div>
+                <span class="choice-cta">Ga till Rekrytering</span>
+              </a>
+            </div>
           </div>
 
-          <figure class="all-photo all-right">
-            <img
-              src="https://oddwork.se/app/uploads/LKAB-Kundcase-2-1920x1357.jpg"
-              alt="Case visual right"
-              data-parallax="-0.03"
-            />
-          </figure>
-
-          <figure class="all-photo all-sub">
-            <img
-              src="https://oddwork.se/app/uploads/Spendrups-leende-person-utanfor-huvudkontoret-1920x1357.jpg"
-              alt="Case visual center"
-              data-parallax="0.05"
-            />
-          </figure>
         </div>
       </section>
 
-      <section class="trust-row reveal">
-        <div class="wrap logos">
-          <img src="https://oddwork.se/app/uploads/saab-logo.png" alt="Saab" />
-          <img src="https://oddwork.se/app/uploads/seb_k_45mm150dpi-%E2%80%93-Redigerad.png" alt="SEB" />
-          <img src="https://oddwork.se/app/uploads/Alfa_Laval-%E2%80%93-Redigerad.png" alt="Alfa Laval" />
-          <img src="https://oddwork.se/app/uploads/LKAB.png" alt="LKAB" />
-          <img src="https://oddwork.se/app/uploads/axfood-logo.png" alt="Axfood" />
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span><b>Kundcase:</b> 100+ leveranser i employer branding och rekrytering</span>
+          <span><b>Strategi + exekvering:</b> fran plan till faktisk leverans</span>
+          <span><b>Insikter:</b> kontinuerlig publicering av larande och metoder</span>
+          <span><b>Kundcase:</b> 100+ leveranser i employer branding och rekrytering</span>
+          <span><b>Strategi + exekvering:</b> fran plan till faktisk leverans</span>
+          <span><b>Insikter:</b> kontinuerlig publicering av larande och metoder</span>
         </div>
-      </section>
+      </div>
 
-      <section class="impact section reveal">
-        <img
-          src="https://oddwork.se/app/uploads/Estrella-3-1920x1357.jpg"
-          alt="Impact visual"
-          data-parallax="0.03"
-        />
-        <div class="wrap">
-          <p class="impact-number">03</p>
-          <h2>Enhanced hiring outcomes</h2>
+      <section class="section reveal">
+        <div class="container section-head">
+          <h2>Kunder och fortroende</h2>
           <p>
-            Vi kopplar strategi till faktisk leverans sa att kandidatupplevelse, kvalitet och
-            intern forankring utvecklas i samma riktning.
+            En enkel trust-strip pa startsidan. Resten av bevisen ligger i kundcase och pa
+            tjanstesidorna.
           </p>
-          <a class="pill" href="kundcase.html">Kundcase &nbsp; Discover +</a>
+        </div>
+        <div class="container logo-row">
+          <div class="logo-item">
+            <img src="https://oddwork.se/app/uploads/saab-logo.png" alt="Saab" />
+          </div>
+          <div class="logo-item">
+            <img src="https://oddwork.se/app/uploads/seb_k_45mm150dpi-%E2%80%93-Redigerad.png" alt="SEB" />
+          </div>
+          <div class="logo-item">
+            <img src="https://oddwork.se/app/uploads/Alfa_Laval-%E2%80%93-Redigerad.png" alt="Alfa Laval" />
+          </div>
+          <div class="logo-item">
+            <img src="https://oddwork.se/app/uploads/LKAB.png" alt="LKAB" />
+          </div>
+          <div class="logo-item">
+            <img src="https://oddwork.se/app/uploads/axfood-logo.png" alt="Axfood" />
+          </div>
         </div>
       </section>
 
-      <section class="section insights-strip reveal">
-        <div class="wrap insights-bar">
-          <h3>Insights</h3>
-          <p>
-            Kort teaser pa startsidan. Fullt artikelarkiv finns under Insights for SEO, larande och
-            specialistpositionering.
-          </p>
-          <a class="insights-link" href="insights.html">Se alla insights +</a>
+      <section class="section reveal">
+        <div class="container story">
+          <aside class="story-sticky">
+            <h2>Texten hanger med skrollen</h2>
+            <p>
+              Vanster sida ligger kvar medan besokaren skrollar genom bevis och erbjudanden till
+              hoger. Det gor hierarkin tydlig utan att sidan blir tung.
+            </p>
+            <div class="hero-cta">
+              <a class="btn" href="kundcase.html">Se kundcase</a>
+              <a class="btn primary" href="kontakt.html">Prata med oss</a>
+            </div>
+          </aside>
+
+          <div class="story-list">
+            <article class="story-card">
+              <img
+                src="https://oddwork.se/app/uploads/Oddwork-Photoshoot2025-2N8A0518-5-HIGH-scaled.jpg"
+                alt="Team Oddwork"
+              />
+              <h3>Employer Branding for komplexa malgrupper</h3>
+              <p>
+                Har visas hur insikt, budskap och aktivering kopplas ihop i ett gemensamt uppdrag.
+              </p>
+            </article>
+
+            <article class="story-card">
+              <img
+                src="https://oddwork.se/app/uploads/Oddwork-Photoshoot2025-2N8A1040-4-HIGH-1920x1280.jpg"
+                alt="Oddwork team i samtal"
+              />
+              <h3>Rekrytering med tydlig kandidatupplevelse</h3>
+              <p>
+                Har visas hur tempo och kvalitet balanseras nar flera roller ska tillsattas
+                parallellt.
+              </p>
+            </article>
+
+            <article class="story-card">
+              <img
+                src="https://oddwork.se/app/uploads/Oddwork-Photoshoot2025-2N8A0311-4-HIGH-scaled.jpg"
+                alt="Oddwork portratt"
+              />
+              <h3>Langsiktig leverans med matbar utveckling</h3>
+              <p>
+                Har visas hur samma modell kan itereras over tid med uppfoljning, lardomar och ny
+                aktivering.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="closing reveal">
-        <div class="wrap">
-          <h2>Redo att ta nasta steg?</h2>
+      <section class="section reveal">
+        <div class="container insights-teaser">
+          <h2>Insights</h2>
           <p>
-            Boka ett forsta mote sa mappar vi nulage, scope och rekommenderat upplagg baserat pa om
-            ni vill borja med Employer Branding eller Rekrytering.
+            Kort preview pa startsidan for SEO och expertposition. Full fordjupning ligger i
+            artikelarkivet.
           </p>
-          <div class="closing-actions">
-            <a href="kontakt.html">Prata med oss</a>
-            <a href="kundcase.html">Se kundcase</a>
-            <a href="om-oss.html">Om Oddwork</a>
+          <div class="hero-cta">
+            <a class="btn" href="insights.html">Se alla insights</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="container closing">
+          <h2>Nasta steg</h2>
+          <p>
+            Om designriktningen ar ratt bygger jag samma visuella system till alla undersidor sa ni
+            kan klicka igenom hela flodet i samma stil.
+          </p>
+          <div class="hero-cta">
+            <a class="btn primary" href="kontakt.html">Boka mote</a>
+            <a class="btn" href="index.html">Se sitemap-prototypen</a>
           </div>
         </div>
       </section>
@@ -842,85 +713,46 @@
             }
           }
         },
-        { threshold: 0.14 }
+        { threshold: 0.16 }
       );
       reveals.forEach((item) => revealObserver.observe(item));
-
-      const body = document.body;
-      const menuToggle = document.querySelector(".menu-toggle");
-      const menuClose = document.querySelector(".menu-close");
-      const menuPanel = document.getElementById("menu-panel");
-
-      function openMenu() {
-        body.classList.add("menu-open");
-        menuPanel.setAttribute("aria-hidden", "false");
-        menuToggle.setAttribute("aria-expanded", "true");
-      }
-
-      function closeMenu() {
-        body.classList.remove("menu-open");
-        menuPanel.setAttribute("aria-hidden", "true");
-        menuToggle.setAttribute("aria-expanded", "false");
-      }
-
-      menuToggle.addEventListener("click", openMenu);
-      menuClose.addEventListener("click", closeMenu);
-      menuPanel.addEventListener("click", (event) => {
-        if (event.target === menuPanel) {
-          closeMenu();
-        }
-      });
 
       const glow = document.querySelector(".cursor-glow");
       const bubble = document.querySelector(".cursor-bubble");
       const finePointer = window.matchMedia("(pointer:fine)").matches;
 
       if (finePointer) {
-        let px = window.innerWidth / 2;
-        let py = window.innerHeight / 2;
-        let gx = px;
-        let gy = py;
-        let bx = px;
-        let by = py;
+        let pointerX = window.innerWidth / 2;
+        let pointerY = window.innerHeight / 2;
+        let glowX = pointerX;
+        let glowY = pointerY;
+        let bubbleX = pointerX;
+        let bubbleY = pointerY;
 
         window.addEventListener("mousemove", (event) => {
-          px = event.clientX;
-          py = event.clientY;
+          pointerX = event.clientX;
+          pointerY = event.clientY;
         });
 
-        const animate = () => {
-          gx += (px - gx) * 0.23;
-          gy += (py - gy) * 0.23;
-          bx += (px - bx) * 0.12;
-          by += (py - by) * 0.12;
+        const hoverTargets = document.querySelectorAll("a, button, .btn");
+        hoverTargets.forEach((target) => {
+          target.addEventListener("mouseenter", () => glow.classList.add("active"));
+          target.addEventListener("mouseleave", () => glow.classList.remove("active"));
+        });
 
-          glow.style.transform = `translate(${gx - 21}px, ${gy - 21}px)`;
-          bubble.style.transform = `translate(${bx - 5.5}px, ${by - 5.5}px)`;
-          requestAnimationFrame(animate);
+        const animateCursor = () => {
+          glowX += (pointerX - glowX) * 0.22;
+          glowY += (pointerY - glowY) * 0.22;
+          bubbleX += (pointerX - bubbleX) * 0.11;
+          bubbleY += (pointerY - bubbleY) * 0.11;
+
+          glow.style.transform = `translate(${glowX - 22}px, ${glowY - 22}px)`;
+          bubble.style.transform = `translate(${bubbleX - 6}px, ${bubbleY - 6}px)`;
+
+          requestAnimationFrame(animateCursor);
         };
 
-        animate();
-      }
-
-      const parallaxNodes = document.querySelectorAll("[data-parallax]");
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      if (!reduceMotion) {
-        const onScroll = () => {
-          const viewport = window.innerHeight || 1;
-          parallaxNodes.forEach((node) => {
-            const speed = Number(node.dataset.parallax || 0);
-            const rect = node.getBoundingClientRect();
-            const midpoint = rect.top + rect.height / 2;
-            const progress = (midpoint - viewport / 2) / viewport;
-            const y = progress * 140 * speed;
-            node.style.transform = `translate3d(0, ${y}px, 0)`;
-          });
-        };
-
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", onScroll);
+        animateCursor();
       }
     </script>
   </body>
