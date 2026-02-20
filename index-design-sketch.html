@@ -229,20 +229,6 @@
         border-color: var(--accent);
       }
 
-      .hero-photo-strip {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .hero-photo-strip img {
-        width: 100%;
-        height: 260px;
-        object-fit: cover;
-        border-radius: 16px;
-        border: none;
-      }
-
       .hero-cta {
         margin-top: 28px;
         display: flex;
@@ -488,8 +474,7 @@
       @media (max-width: 1120px) {
         .header-row,
         .story,
-        .logo-row,
-        .hero-photo-strip {
+        .logo-row {
           grid-template-columns: 1fr;
         }
 
@@ -590,14 +575,6 @@
             </div>
           </div>
 
-          <div class="hero-photo-strip">
-            <img
-              src="https://oddwork.se/app/uploads/Spendrups-leende-person-utanfor-huvudkontoret-1920x1357.jpg"
-              alt="Teamfoto 1"
-            />
-            <img src="https://oddwork.se/app/uploads/Estrella-3-1920x1357.jpg" alt="Teamfoto 2" />
-            <img src="https://oddwork.se/app/uploads/Saab-2-1-1920x1357.jpg" alt="Teamfoto 3" />
-          </div>
         </div>
       </section>
 
